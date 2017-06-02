@@ -2,10 +2,38 @@
 <html>
   <head>
     <title><%= title %></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script>
+    angular.module('app', [])
+    .controller('myfirst',function($http,$scope) {
+    $scope.todos = [
+      { title: 'Learn Javascript', completed: true },
+      { title: 'Learn Angular.js', completed: false },
+      { title: 'Love this tutorial', completed: true },
+      { title: 'Learn Javascript design patterns', completed: false },
+      { title: 'Build Node.js backend', completed: false },
+    ];
+    $http.get("/users").then(function(response) {
+            $scope.myData = response.data;
+        });
+
+  });
+    </script>
   </head>
-  <body style="color:red" >
-    <h1><%= title %></h1>
-    <p>Welcome to the worl<%= title %> at <%= today %></p>
+  <body ng-app="app">
+    <div ng-controller="myfirst">
+      <div ng-repeat="todo in todos">
+        <a href="">
+      <i>
+{{todo.title}}<input type="checkbox" ng-model="todo.completed"/>
+      </i>
+        </a>
+    </div>
+    <div>
+      {{myData.title}}
+    </div>
+</div>
   </body>
+
 </html>
