@@ -22,9 +22,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', index);
 var strategy = new Auth0Strategy({
-   domain:       'ilyass.auth0.com',
-   clientID:     'Wx35ryoQ5zqf0buH7ih454ygO_3TMGiD',
-   clientSecret: '-z2rMzRLz7JsTPcnSrBkVcyBeXv38XTgz-qseMwdBYMuE_t6gVr8SO1tVXwekLiD',
+   domain:       'ilyassben.auth0.com',
+   clientID:     'JU-xtknkmZlawoW4ynT-3nlcwHdZ9_n8',
+   clientSecret: 'A7-h8ClT02dxfV6PK3Fkts2-prJzzZD1-Z8TCbf3s-FORqyasWabfGHj-7o9I7W8',
    callbackURL:  'https://whispering-peak-49980.herokuapp.com/callback'
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
