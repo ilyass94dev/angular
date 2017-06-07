@@ -1,0 +1,23 @@
+<html>
+<head>
+  <script src="https://cdn.auth0.com/js/auth0/8.7/auth0.min.js"></script>
+  <script src="https://cdn.auth0.com/js/lock/10.16/lock.min.js"></script>
+  <script>
+  function signinGoogle(){
+    var auth = new auth0.WebAuth({
+      domain: 'ilyass.auth0.com',
+      clientID: 'Wx35ryoQ5zqf0buH7ih454ygO_3TMGiD',
+      redirectUri: 'http://localhost:7000/callback'
+    });
+
+  auth.authorize({
+      connection:'google-oauth2',
+      responseType: 'code'
+    });
+  }
+ </script>
+</head>
+<body>
+<button onClick="signinGoogle()"> Log with google</button>
+</body>
+</html>
