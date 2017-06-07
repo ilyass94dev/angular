@@ -9,7 +9,7 @@ router.get("/",function(req,res,next)
 });
 router.get("/user",function(req,res,next)
 {
-  res.render("index",{"title":global.user});
+  res.render("index",{title:global.user});
 
 });
 router.get('/users', function(req,res,next)
@@ -31,13 +31,13 @@ router.get('/logout', function(req, res){
 });
 router.get('/login',
   function(req, res){
-    res.render('users', { env: process.env });
+    res.render('users');
 });
   router.get('/callback',
   passport.authenticate('auth0', { failureRedirect: '/' }),
   function(req, res) {
     global.user=req.user;
-    console.log(global.user);
+    console.log("here is the yser"+global.user);
     res.redirect(req.session.returnTo || '/user');
   });
 module.exports = router;
