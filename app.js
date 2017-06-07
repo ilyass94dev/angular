@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 var index = require('./routes/index');
-var users = require('./routes/users');
 var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,7 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', index);
-app.use('/users', users);
 var strategy = new Auth0Strategy({
    domain:       'ilyass.auth0.com',
    clientID:     'Wx35ryoQ5zqf0buH7ih454ygO_3TMGiD',
@@ -48,9 +46,9 @@ passport.deserializeUser(function(id, done) {
 });
 
 app.use(passport.initialize());
+
 app.use(passport.session());
 
-// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

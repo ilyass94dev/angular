@@ -9,7 +9,7 @@ router.get("/",function(req,res,next)
 });
 router.get("/user",function(req,res,next)
 {
-  res.send(global.user);
+  res.render("index",{"title":global.user});
 });
 router.get('/users', function(req,res,next)
 {
@@ -24,6 +24,7 @@ next();
 console.log("and finally here");
 });
 router.get('/logout', function(req, res){
+  global.user=""
   req.logout();
   res.redirect('/');
 });
