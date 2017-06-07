@@ -6,10 +6,6 @@
       <script>
          angular.module('app', [])
          .controller('myfirst',function($http,$scope) {
-         $scope.todos = [
-           { title: 'Learn Javascript', completed: true },
-           { title: 'Learn Angular.js', completed: false }
-         ];
          $scope.click=function()
          {
          $http.get("/users").then(function(response) {
@@ -22,17 +18,13 @@
    </head>
    <body ng-app="app">
       <div ng-controller="myfirst">
-         <div ng-repeat="todo in todos">
-            <a href="">
-            <i>
-            {{todo.title}}<input type="checkbox" ng-model="todo.completed"/>
-            </i>
-            </a>
-         </div>
          <input type="submit" value="click here" ng-click="click()"/>
          <div>
             {{myData}}
          </div>
+       <div>
+         <label> <%= title.displayName %></label>
+         <img src="<%= title.picture %>"/>
       </div>
    </body>
 </html>

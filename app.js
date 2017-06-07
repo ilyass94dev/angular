@@ -25,7 +25,7 @@ var strategy = new Auth0Strategy({
    domain:       'ilyass.auth0.com',
    clientID:     'Wx35ryoQ5zqf0buH7ih454ygO_3TMGiD',
    clientSecret: '-z2rMzRLz7JsTPcnSrBkVcyBeXv38XTgz-qseMwdBYMuE_t6gVr8SO1tVXwekLiD',
-   callbackURL:  'http://localhost:7000/callback'
+   callbackURL:  'https://whispering-peak-49980.herokuapp.com/callback'
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
@@ -38,15 +38,12 @@ passport.use(strategy);
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
-
 passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {
     done(err, user);
   });
 });
-
 app.use(passport.initialize());
-
 app.use(passport.session());
 
 app.use(function(req, res, next) {
