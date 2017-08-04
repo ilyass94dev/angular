@@ -4,28 +4,45 @@
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
       <link rel='stylesheet' href='/stylesheets/style.css'/>
       <script>
-         angular.module('app', [])
-         .controller('myfirst',function($http,$scope) {
-         $scope.click=function()
-         {
-         $http.get("/users").then(function(response) {
-         console.log(response.data);
-         $scope.myData = response.data;
-         });
-         }
-         });
-      </script>
+  var app=angular.module("myapp",[]);
+  app.controller("control1",function($scope)
+{
+  $scope.int1=7;
+  $scope.int2=5;
+});
+</script>
    </head>
-   <body ng-app="app">
-      <div ng-controller="myfirst">
-         <input type="submit" value="click here" ng-click="click()"/>
-         <div>
-            {{myData}}
-         </div>
-       <div>
-         <img src="<%= title.picture %>"/>
-       </br>
-        <label><%= title.displayName %></label>
-      </div>
+   <body ng-app="myapp" ng-init="firstname='ilyass'">
+   <div ng-controller="control1" >
+     <h1>Angular Training:</h1>
+     <h5>Chapter 1 :Expression </h5>
+     {{int1+int2}}
+          <h5> Chapter 2 :Directives</h5>
+          <div> there are tree types of directives : </div>
+          <ul>
+          <li>ng-app: it defines which application you are working on, in another meaning which body tag;</li>
+          <li>ng-init: this attribute is used to initialize a data model for the application.</li>
+          <li>ng-model : used to set the data variable in inputs</li>
+          </ul>
+          <span style="color : brown ">Example</span>
+          <input type="text" ng-model="firstname"/> {{firstname}}
+
+           <h5>Chapter 3 : forms</h5>
+Input Validator:
+           <form name="myForm">
+    Email:
+    <input type="email" name="myAddress" ng-model="email">
+
+    <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+  <br/>  Telephone
+    <input type="tel" name="telephone" ng-model="phone">
+
+<br/>
+    email is {{email}}
+    <br/>
+    phone is {{phone}}
+</form>
+
+   </div>
    </body>
 </html>
